@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
+    <!-- Ecran de start -->
     <div id="start-screen" class="screen active">
         <div class="start-container">
             <div class="cross-ornament">&#10013;</div>
@@ -28,9 +29,23 @@
                 atunci spunem numărul care se apropie cel mai mult de adevăr —
                 de atâtea ori pe an, pe săptămână, de X ani, luni, săptămâni.</em>
             </p>
+            <div class="privacy-notice">
+                <span class="privacy-icon">&#128274;</span>
+                Această aplicație <strong>nu salvează date</strong>, nu solicită nume sau adrese de e-mail.
+                Toate informațiile rămân exclusiv pe dispozitivul dumneavoastră.
+            </div>
             <button id="btn-start" class="btn-primary" onclick="app.start()">Începe examinarea conștiinței</button>
         </div>
+        <footer class="site-footer">
+            <a href="#" onclick="app.showLegal('cookies'); return false;">Politica de Cookies</a>
+            <span class="footer-sep">|</span>
+            <a href="#" onclick="app.showLegal('termeni'); return false;">Termeni și Condiții</a>
+            <span class="footer-sep">|</span>
+            <a href="#" onclick="app.showLegal('confidentialitate'); return false;">Politica de Confidențialitate</a>
+        </footer>
     </div>
+
+    <!-- Ecran principal cu întrebări -->
     <div id="question-screen" class="screen">
         <div class="progress-container">
             <div class="progress-bar">
@@ -38,12 +53,18 @@
             </div>
             <span id="progress-text" class="progress-text">1 / 15</span>
         </div>
-        <div id="question-container" class="question-container"></div>
+
+        <div id="question-container" class="question-container">
+            <!-- Content is dynamically generated -->
+        </div>
+
         <div class="navigation">
             <button id="btn-prev" class="btn-nav btn-prev" onclick="app.prev()">&#8592; Înapoi</button>
             <button id="btn-next" class="btn-nav btn-next" onclick="app.next()">Continuă &#8594;</button>
         </div>
     </div>
+
+    <!-- Ecran final -->
     <div id="end-screen" class="screen">
         <div class="start-container">
             <div class="cross-ornament">&#10013;</div>
@@ -71,8 +92,26 @@
             </div>
             <p class="fie-isus">Fie Isus iubit de către toate inimile!</p>
         </div>
+        <footer class="site-footer">
+            <a href="#" onclick="app.showLegal('cookies'); return false;">Politica de Cookies</a>
+            <span class="footer-sep">|</span>
+            <a href="#" onclick="app.showLegal('termeni'); return false;">Termeni și Condiții</a>
+            <span class="footer-sep">|</span>
+            <a href="#" onclick="app.showLegal('confidentialitate'); return false;">Politica de Confidențialitate</a>
+        </footer>
     </div>
+
+    <!-- Modal pagini legale -->
+    <div id="legal-modal" class="legal-modal" style="display:none;">
+        <div class="legal-modal-content">
+            <button class="legal-close" onclick="app.closeLegal()">&times;</button>
+            <div id="legal-body"></div>
+        </div>
+    </div>
+
+    <!-- Container ascuns pentru generarea PDF -->
     <div id="pdf-content" style="display:none;"></div>
+
     <script src="app.js"></script>
 </body>
-  </html>
+    </html>
