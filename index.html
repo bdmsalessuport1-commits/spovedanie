@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spovedanie Generală - Ghid Interactiv</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div id="start-screen" class="screen active">
+        <div class="start-container">
+            <div class="cross-ornament">&#10013;</div>
+            <h1>Spovadă Generală</h1>
+            <p class="subtitle">Ghid interactiv pentru examinarea conștiinței</p>
+            <div class="divider">&#10058;</div>
+            <p class="description">
+                Acest ghid vă va conduce pas cu pas prin examinarea conștiinței,
+                urmând structura tradițională a spovedaniei catolice. La final,
+                veți putea genera un document PDF cu lista păcatelor mărturisite,
+                pe care îl puteți folosi ca suport în timpul spovedaniei.
+            </p>
+            <p class="note">
+                <em>N.B. La recunoașterea greșelilor, dacă nu putem spune numărul exact,
+                atunci spunem numărul care se apropie cel mai mult de adevăr —
+                de atâtea ori pe an, pe săptămână, de X ani, luni, săptămâni.</em>
+            </p>
+            <button id="btn-start" class="btn-primary" onclick="app.start()">Începe examinarea conștiinței</button>
+        </div>
+    </div>
+    <div id="question-screen" class="screen">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <span id="progress-text" class="progress-text">1 / 15</span>
+        </div>
+        <div id="question-container" class="question-container"></div>
+        <div class="navigation">
+            <button id="btn-prev" class="btn-nav btn-prev" onclick="app.prev()">&#8592; Înapoi</button>
+            <button id="btn-next" class="btn-nav btn-next" onclick="app.next()">Continuă &#8594;</button>
+        </div>
+    </div>
+    <div id="end-screen" class="screen">
+        <div class="start-container">
+            <div class="cross-ornament">&#10013;</div>
+            <h1>Act de Căință</h1>
+            <div class="divider">&#10058;</div>
+            <div class="act-cainta">
+                <p>
+                    Doamne, Dumnezeul meu, mă căiesc din toată inima de toate păcatele mele și le
+                    urăsc mai presus de toate, pentru că prin ele am pierdut harul Tău și Împărăția
+                    cerurilor și m-am făcut vrednic de pedeapsa veșnică a iadului. Dar mai mult mă
+                    căiesc pentru că, păcătuind, Te-am mâniat pe Tine, Părintele meu, Mântuitorul
+                    meu și Dumnezeul meu, atât de mare și atât de bun. Pentru aceasta, mă hotărăsc,
+                    cu ajutorul harului Tău, să nu mai păcătuiesc și să fug de orice prilej de păcat.
+                </p>
+                <p class="amin">Amin.</p>
+            </div>
+            <p class="closing-text">
+                Mă învinuiesc și de păcatele pe care nu le știu, de care nu îmi aduc aminte,
+                cele din toată viața mea și de tot ceea ce L-ar fi supărat pe Domnul.
+                Mă învinuiesc așa cum mă știe Domnul vinovat.
+            </p>
+            <div class="end-buttons">
+                <button class="btn-primary" onclick="app.generatePDF()">Generează PDF cu lista păcatelor</button>
+                <button class="btn-secondary" onclick="app.restart()">Începe din nou</button>
+            </div>
+            <p class="fie-isus">Fie Isus iubit de către toate inimile!</p>
+        </div>
+    </div>
+    <div id="pdf-content" style="display:none;"></div>
+    <script src="app.js"></script>
+</body>
+  </html>
